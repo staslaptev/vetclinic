@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ВетЭксперт Энгельс</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Ветеринарная клиника ВетЭксперт в Энгельсе. Ежедневно с 8:00 до 20:00, пр-т Фридриха Энгельса, 24.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    // Прячем героя до старта анимации; если GSAP не загрузился, через 2,5 с показываем как есть
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("anim-pending");
+      setTimeout(function () { document.documentElement.classList.remove("anim-pending"); }, 2500);
+    }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#top">Перейти к содержанию</a>
+
+<header class="site-header">
+  <div class="container site-header__row">
+    <a class="logo" href="#top" aria-label="ВетЭксперт, на главную">
+      <svg class="logo__mark" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="11" fill="#5B4BDB"/>
+        <path d="M17 9v16M9 17h16" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="25.5" cy="8.5" r="3" fill="#A396EE"/>
+      </svg>
+      ВетЭксперт
+    </a>
+
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+
+    <nav class="nav" id="site-nav" aria-label="Разделы сайта">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#services">Услуги</a></li>
+        <li><a class="nav__link" href="#about">О клинике</a></li>
+        <li><a class="nav__link" href="#doctors">Врачи</a></li>
+        <li><a class="nav__link" href="#reviews">Отзывы</a></li>
+        <li><a class="nav__link" href="#contacts">Контакты</a></li>
+      </ul>
+      <div class="nav__extra">
+        <a class="btn btn--primary" href="#booking">Записаться на приём</a>
+        <a class="btn btn--ghost" href="tel:+79085484651">+7 908 548-46-51</a>
+      </div>
+    </nav>
+
+    <a class="site-header__phone" href="tel:+79085484651">+7 908 548-46-51</a>
+    <a class="btn btn--primary btn--sm site-header__cta" href="#booking">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <h1 class="hero__wordmark" id="hero-title" data-fit><span class="wm-ink">ВетЭксперт</span></h1>
+    </div>
+
+    <div class="hero__stage">
+      <!-- Фон подиума отдельным слоем: его анимация не должна уводить животных под вордмарк -->
+      <div class="hero__podium" aria-hidden="true"></div>
+      <div class="container hero__stage-inner">
+        <p class="hero__meta">
+          <strong>Ежедневно 8:00–20:00</strong>
+          <span>Энгельс, пр-т Фридриха Энгельса, 24</span>
+        </p>
+        <div class="hero__offer">
+          <p class="hero__lead">Терапия, хирургия и стационар для кошек и собак. Принимаем каждый день.</p>
+          <a class="btn btn--primary" href="#booking">Записаться на приём</a>
+          <a class="hero__rating" href="#reviews">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg>
+            <b>4,9</b> оценка на Яндекс Картах
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__pets" data-pets>
+        <img src="img/hero-pets.webp" alt="Австралийская овчарка и кошка породы рэгдолл лежат рядом" width="1222" height="688" fetchpriority="high">
+        <div class="pets-ph" aria-hidden="true">
+          <div class="pets-ph__dog"></div>
+          <div class="pets-ph__cat"></div>
+          <span class="pets-ph__label">Здесь будут пёс и кот: img/hero-pets.png</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Терапия</span><span class="marquee__sep">/</span>
+      <span>Вакцинация</span><span class="marquee__sep">/</span>
+      <span>Стерилизация</span><span class="marquee__sep">/</span>
+      <span>Стоматология</span><span class="marquee__sep">/</span>
+      <span>Анализы</span><span class="marquee__sep">/</span>
+      <span>Стационар</span><span class="marquee__sep">/</span>
+    </div>
+  </div>
+
+  <!-- 2. Популярные услуги -->
+  <section class="sheet sheet--card sheet--first" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="services-title">Популярные услуги</h2>
+        <p>С чем чаще всего приходят к нам владельцы кошек и собак.</p>
+      </div>
+      <!-- TODO: подтвердить у клиники список и описания услуг -->
+      <ul class="services">
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 2v2M5 2v2M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg></span>
+          <span class="pill">Терапия</span>
+          <h3 class="service__title">Приём терапевта</h3>
+          <p class="service__text">Осмотр, диагноз и понятный план лечения. Врач объясняет, что происходит с питомцем и что делать дома.</p>
+          <a class="service__link" href="#booking" data-service="Приём терапевта">Записаться</a>
+        </li>
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5"/><path d="m9 11 4 4M5 19l-3 3M14 4l6 6"/></svg></span>
+          <span class="pill">Профилактика</span>
+          <h3 class="service__title">Вакцинация</h3>
+          <p class="service__text">Комплексные прививки по возрасту, отметка в ветеринарном паспорте и напоминание о следующей.</p>
+          <a class="service__link" href="#booking" data-service="Вакцинация">Записаться</a>
+        </li>
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12h-2.5a2 2 0 0 0-1.9 1.5l-2.4 8.4a.3.3 0 0 1-.5 0L9.2 2.1a.3.3 0 0 0-.5 0L6.4 10.5A2 2 0 0 1 4.5 12H2"/></svg></span>
+          <span class="pill">Хирургия</span>
+          <h3 class="service__title">Стерилизация и кастрация</h3>
+          <p class="service__text">Операция под наркозом с наблюдением после. Позвоним, когда питомец проснётся.</p>
+          <a class="service__link" href="#booking" data-service="Стерилизация и кастрация">Записаться</a>
+        </li>
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5.5C10.5 4 8.5 3 6.5 3 4 3 2.5 5 2.5 7.5c0 3 1.2 4.6 2 7.5.7 2.6 1 6 2.7 6 2 0 1.6-5 4.8-5s2.8 5 4.8 5c1.7 0 2-3.4 2.7-6 .8-2.9 2-4.5 2-7.5C21.5 5 20 3 17.5 3c-2 0-4 1-5.5 2.5Z"/></svg></span>
+          <span class="pill">Стоматология</span>
+          <h3 class="service__title">Чистка и лечение зубов</h3>
+          <p class="service__text">Снятие зубного камня, удаление больных зубов, помощь при абсцессах.</p>
+          <a class="service__link" href="#booking" data-service="Стоматология">Записаться</a>
+        </li>
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 2v7.3L4.3 19a2 2 0 0 0 1.7 3h12a2 2 0 0 0 1.7-3L14 9.3V2M8.5 2h7M7 16h10"/></svg></span>
+          <span class="pill">Диагностика</span>
+          <h3 class="service__title">Анализы</h3>
+          <p class="service__text">Быстро и аккуратно берём кровь. Результаты разбирает лечащий врач.</p>
+          <a class="service__link" href="#booking" data-service="Анализы">Записаться</a>
+        </li>
+        <li class="service">
+          <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg></span>
+          <span class="pill">Стационар</span>
+          <h3 class="service__title">Стационар</h3>
+          <p class="service__text">Оставим питомца под наблюдением врачей на несколько дней после операции или при тяжёлой болезни.</p>
+          <a class="service__link" href="#booking" data-service="Стационар">Записаться</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Записаться -->
+  <section class="sheet sheet--violet" id="booking" aria-labelledby="booking-title">
+    <div class="container booking">
+      <div class="booking__intro">
+        <h2 class="booking__title" id="booking-title">Записаться на приём</h2>
+        <p class="booking__text">Оставьте заявку, администратор перезвонит и подберёт удобное время.</p>
+
+        <ol class="steps">
+          <li class="steps__item is-active">
+            <span class="steps__dot" aria-hidden="true"></span>
+            <span class="steps__name">Заявка</span>
+            <span class="steps__desc">Расскажите, кто заболел и что беспокоит</span>
+          </li>
+          <li class="steps__item">
+            <span class="steps__dot" aria-hidden="true"></span>
+            <span class="steps__name">Звонок</span>
+            <span class="steps__desc">Администратор перезвонит в рабочее время, с 8:00 до 20:00</span>
+          </li>
+          <li class="steps__item">
+            <span class="steps__dot" aria-hidden="true"></span>
+            <span class="steps__name">Приём</span>
+            <span class="steps__desc">Приходите к назначенному времени</span>
+          </li>
+        </ol>
+
+        <p class="booking__call">
+          Срочно нужна помощь? Позвоните:
+          <a href="tel:+79085484651">+7 908 548-46-51</a>
+        </p>
+      </div>
+
+      <form class="booking-form" id="booking-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="lead-name">Ваше имя</label>
+          <input class="field__input" id="lead-name" name="name" type="text" autocomplete="name" required>
+          <p class="field__error" id="lead-name-error" hidden>Напишите, как к вам обращаться</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="lead-phone">Телефон</label>
+          <input class="field__input" id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          <p class="field__error" id="lead-phone-error" hidden>Номер должен содержать 11 цифр, например +7 900 000-00-00</p>
+        </div>
+
+        <fieldset class="field field--choice">
+          <legend class="field__label">Питомец</legend>
+          <div class="choice">
+            <label class="choice__item"><input type="radio" name="pet" id="lead-pet-cat" value="Кошка" checked><span>Кошка</span></label>
+            <label class="choice__item"><input type="radio" name="pet" id="lead-pet-dog" value="Собака"><span>Собака</span></label>
+            <label class="choice__item"><input type="radio" name="pet" id="lead-pet-other" value="Другое животное"><span>Другое</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field__label" for="lead-service">Услуга</label>
+            <select class="field__input" id="lead-service" name="service">
+              <option>Нужна консультация</option>
+              <option>Приём терапевта</option>
+              <option>Вакцинация</option>
+              <option>Стерилизация и кастрация</option>
+              <option>Стоматология</option>
+              <option>Анализы</option>
+              <option>Стационар</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="lead-doctor">Врач</label>
+            <!-- TODO: заменить на реальных врачей клиники вместе с карточками в «Наши врачи» -->
+            <select class="field__input" id="lead-doctor" name="doctor">
+              <option>Любой врач</option>
+              <option>Андрей Мельников</option>
+              <option>Светлана Коваль</option>
+              <option>Дмитрий Осипов</option>
+              <option>Елена Руденко</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="lead-time">Удобное время</label>
+          <select class="field__input" id="lead-time" name="time">
+            <option>Любое</option>
+            <option>Утро, 8:00–12:00</option>
+            <option>День, 12:00–16:00</option>
+            <option>Вечер, 16:00–20:00</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="lead-comment">Что беспокоит <span class="field__optional">необязательно</span></label>
+          <textarea class="field__input field__input--area" id="lead-comment" name="comment" rows="3"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="consent" for="lead-consent">
+            <input type="checkbox" id="lead-consent" name="consent" required>
+            <!-- TODO: ссылка на политику обработки персональных данных -->
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+          <p class="field__error" id="lead-consent-error" hidden>Без согласия мы не сможем принять заявку</p>
+        </div>
+
+        <button class="btn btn--primary booking-form__submit" type="submit">Записаться на приём</button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- 4. О нас -->
+  <section class="sheet sheet--paper" id="about" aria-labelledby="about-title">
+    <div class="container about">
+      <div class="about__main">
+        <h2 class="about__title" id="about-title">Лечим, как <span class="plate">своих</span></h2>
+
+        <!-- TODO: подтвердить текст у клиники -->
+        <p class="manifest" data-manifest>
+          ВетЭксперт — ветеринарная клиника в Энгельсе. Принимаем каждый день, оперируем и ведём стационар,
+          а после операции сами звоним хозяевам.
+          <span class="manifest__soft">Питомцу нужен хороший врач, а хозяину — понимать, что происходит и что будет дальше.</span>
+        </p>
+
+        <dl class="facts">
+          <div class="facts__item">
+            <dt class="facts__value">4,9</dt>
+            <dd class="facts__label">рейтинг на Яндекс Картах</dd>
+          </div>
+          <div class="facts__item">
+            <dt class="facts__value">242</dt>
+            <dd class="facts__label">отзыва от хозяев питомцев</dd>
+          </div>
+          <div class="facts__item">
+            <dt class="facts__value">7/7</dt>
+            <dd class="facts__label">работаем без выходных</dd>
+          </div>
+          <div class="facts__item">
+            <dt class="facts__value">8–20</dt>
+            <dd class="facts__label">часы приёма каждый день</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="about__media media" data-media>
+        <img src="img/about.jpg" alt="Врач клиники слушает кошку стетоскопом" width="832" height="1040" loading="lazy">
+        <span class="media__ph" aria-hidden="true">Фото клиники: img/about.jpg</span>
+        <figcaption class="glass">
+          <span class="glass__label">Оценка клиники</span>
+          <span class="glass__value">4,9 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg></span>
+          <span class="glass__note">607 оценок на Яндекс Картах</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. Наши специалисты -->
+  <section class="sheet sheet--card" id="doctors" aria-labelledby="doctors-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="doctors-title">Наши врачи</h2>
+        <p>Терапевты и хирурги, которые ведут питомца от первого приёма до выздоровления.</p>
+      </div>
+
+      <!-- TODO: фото — ИИ-серия, имена и описания — заглушки. Заменить на реальных врачей клиники (бриф фотосессии в PROMPTS.md) -->
+      <div class="carousel" data-carousel>
+        <div class="carousel__nav">
+          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущие врачи"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующие врачи"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <ul class="carousel__track doctors" data-carousel-track>
+          <li class="doctor">
+            <figure class="doctor__photo media" data-media>
+              <img src="img/doctor-1.jpg" alt="Андрей Мельников с кошкой породы рэгдолл на руках" width="832" height="1040" loading="lazy">
+              <span class="media__ph" aria-hidden="true">img/doctor-1.jpg</span>
+            </figure>
+            <button class="doctor__tag" type="button" aria-expanded="false" aria-controls="doctor-1-bio"><b>Андрей Мельников</b><span>Главный врач, хирург</span></button>
+            <div class="doctor__bio" id="doctor-1-bio">
+              <div class="doctor__bio-inner">
+                <p class="doctor__name">Андрей Мельников</p>
+                <p class="doctor__role">Главный врач, хирург</p>
+                <p class="doctor__text">Проводит плановые и срочные операции: стерилизацию, удаление новообразований, помощь при травмах. Перед операцией подробно объясняет хозяину, что будет и как готовить питомца.</p>
+                <ul class="doctor__tags"><li>Хирургия</li><li>Стерилизация</li><li>Травмы</li></ul>
+                <a class="btn btn--primary btn--sm doctor__cta" href="#booking" data-doctor="Андрей Мельников">Записаться к врачу</a>
+              </div>
+            </div>
+          </li>
+          <li class="doctor">
+            <figure class="doctor__photo media" data-media>
+              <img src="img/doctor-2.jpg" alt="Светлана Коваль со щенком ретривера на руках" width="832" height="1040" loading="lazy">
+              <span class="media__ph" aria-hidden="true">img/doctor-2.jpg</span>
+            </figure>
+            <button class="doctor__tag" type="button" aria-expanded="false" aria-controls="doctor-2-bio"><b>Светлана Коваль</b><span>Терапевт</span></button>
+            <div class="doctor__bio" id="doctor-2-bio">
+              <div class="doctor__bio-inner">
+                <p class="doctor__name">Светлана Коваль</p>
+                <p class="doctor__role">Терапевт</p>
+                <p class="doctor__text">Ведёт первичные приёмы, вакцинацию и наблюдение хронических болезней. Составляет понятный план лечения и следит за питомцами в стационаре.</p>
+                <ul class="doctor__tags"><li>Терапия</li><li>Вакцинация</li><li>Стационар</li></ul>
+                <a class="btn btn--primary btn--sm doctor__cta" href="#booking" data-doctor="Светлана Коваль">Записаться к врачу</a>
+              </div>
+            </div>
+          </li>
+          <li class="doctor">
+            <figure class="doctor__photo media" data-media>
+              <img src="img/doctor-3.jpg" alt="Дмитрий Осипов с белым котёнком на руках" width="832" height="1040" loading="lazy">
+              <span class="media__ph" aria-hidden="true">img/doctor-3.jpg</span>
+            </figure>
+            <button class="doctor__tag" type="button" aria-expanded="false" aria-controls="doctor-3-bio"><b>Дмитрий Осипов</b><span>Стоматолог</span></button>
+            <div class="doctor__bio" id="doctor-3-bio">
+              <div class="doctor__bio-inner">
+                <p class="doctor__name">Дмитрий Осипов</p>
+                <p class="doctor__role">Стоматолог</p>
+                <p class="doctor__text">Снимает зубной камень, удаляет больные зубы и лечит абсцессы у кошек и собак. Подскажет, как ухаживать за зубами питомца дома.</p>
+                <ul class="doctor__tags"><li>Стоматология</li><li>Чистка зубов</li></ul>
+                <a class="btn btn--primary btn--sm doctor__cta" href="#booking" data-doctor="Дмитрий Осипов">Записаться к врачу</a>
+              </div>
+            </div>
+          </li>
+          <li class="doctor">
+            <figure class="doctor__photo media" data-media>
+              <img src="img/doctor-4.jpg" alt="Елена Руденко с кроликом на руках" width="832" height="1040" loading="lazy">
+              <span class="media__ph" aria-hidden="true">img/doctor-4.jpg</span>
+            </figure>
+            <button class="doctor__tag" type="button" aria-expanded="false" aria-controls="doctor-4-bio"><b>Елена Руденко</b><span>Врач диагностики</span></button>
+            <div class="doctor__bio" id="doctor-4-bio">
+              <div class="doctor__bio-inner">
+                <p class="doctor__name">Елена Руденко</p>
+                <p class="doctor__role">Врач диагностики</p>
+                <p class="doctor__text">Берёт анализы и проводит обследования, помогает коллегам поставить точный диагноз. Работает и с экзотическими питомцами: кроликами, хорьками, грызунами.</p>
+                <ul class="doctor__tags"><li>Анализы</li><li>Диагностика</li><li>Экзоты</li></ul>
+                <a class="btn btn--primary btn--sm doctor__cta" href="#booking" data-doctor="Елена Руденко">Записаться к врачу</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Отзывы -->
+  <section class="sheet sheet--lilac" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="reviews-head">
+        <h2 class="reviews-head__title" id="reviews-title">Отзывы</h2>
+        <a class="score" href="https://yandex.ru/maps/org/vetekspert/26442412714/reviews/" target="_blank" rel="noopener">
+          <span class="score__value">4,9</span>
+          <span class="score__meta">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span>242 отзыва и 607 оценок на Яндекс Картах</span>
+          </span>
+        </a>
+        <!-- TODO: страница со всеми отзывами -->
+        <button class="btn btn--ghost reviews-head__all" type="button">Посмотреть все отзывы</button>
+      </div>
+    </div>
+
+    <!-- Сцена: три карточки сменяют друг друга по прокрутке, за ними бежит строка (приём из видео-референса, 7–9 с).
+         Без JS/GSAP карточки просто стоят в ряд. -->
+    <div class="reviews-stage" data-reviews>
+      <div class="marquee marquee--stage" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Отзывы наших любимых клиентов</span><span class="marquee__sep">/</span>
+          <span>Отзывы наших любимых клиентов</span><span class="marquee__sep">/</span>
+        </div>
+      </div>
+
+      <!-- Отзывы с Яндекс Карт, сокращены без изменения смысла -->
+      <ul class="reviews-stack">
+        <li class="review-card">
+          <div class="review-card__top">
+            <span class="review-card__quote" aria-hidden="true">“</span>
+            <span class="pill">Стерилизация</span>
+          </div>
+          <blockquote class="review-card__text">Очень переживала, как пройдёт стерилизация кошечки Раисы. Спасибо, что позвонили и успокоили. Ребёнок носится, как будто ничего и не было. Сравнивала цены по городу: у вас самая приемлемая, а качество на пять звёзд.</blockquote>
+          <div class="review-card__foot">
+            <span class="review-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><clipPath id="av-1"><circle cx="32" cy="32" r="32"/></clipPath><g clip-path="url(#av-1)">
+                <rect width="64" height="64" fill="#E4E0F8"/>
+                <path d="M18 30c0-10 6-17 14-17s14 7 14 17v20H18z" fill="#6B4A3A"/>
+                <path d="M13 64c0-11 8-18 19-18s19 7 19 18z" fill="#5B4BDB"/>
+                <rect x="28" y="38" width="8" height="9" rx="3" fill="#F3CDB6"/>
+                <circle cx="32" cy="29" r="12" fill="#F3CDB6"/>
+                <path d="M20 28c1-8 6-13 12-13s11 5 12 13c-4-4-9-6-14-5-4 1-7 2-10 5z" fill="#6B4A3A"/>
+                <circle cx="27.5" cy="30" r="1.4" fill="#1C1A35"/><circle cx="36.5" cy="30" r="1.4" fill="#1C1A35"/>
+                <path d="M28.5 34.5q3.5 3 7 0" stroke="#1C1A35" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="25" cy="33.5" r="1.8" fill="#F2A7A7" opacity=".75"/><circle cx="39" cy="33.5" r="1.8" fill="#F2A7A7" opacity=".75"/>
+              </g></svg>
+            </span>
+            <p class="review-card__who"><b>Дарья Щепетова</b><span>23 сентября, Яндекс Карты</span></p>
+            <span class="stars" role="img" aria-label="5 из 5">★★★★★</span>
+          </div>
+        </li>
+        <li class="review-card">
+          <div class="review-card__top">
+            <span class="review-card__quote" aria-hidden="true">“</span>
+            <span class="pill">Стоматология</span>
+          </div>
+          <blockquote class="review-card__text">Обратилась экстренно: кошка ничего не ела и не пила, оказался абсцесс из-за больного зуба. Доктор бережно всё сделал, удалил зуб и почистил остальные, подробно рассказал о лечении. Никита Алексеевич — настоящий профессионал.</blockquote>
+          <div class="review-card__foot">
+            <span class="review-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><clipPath id="av-2"><circle cx="32" cy="32" r="32"/></clipPath><g clip-path="url(#av-2)">
+                <rect width="64" height="64" fill="#CFC8F5"/>
+                <path d="M19 31c0-10 6-16 13-16s13 6 13 16v9c-2 1-4 1-6 0H25c-2 1-4 1-6 0z" fill="#E2B866"/>
+                <path d="M13 64c0-11 8-18 19-18s19 7 19 18z" fill="#FFFFFF"/>
+                <rect x="28" y="38" width="8" height="9" rx="3" fill="#F6D9C4"/>
+                <circle cx="32" cy="29" r="12" fill="#F6D9C4"/>
+                <path d="M20 29c0-9 5-14 12-14s12 5 12 13c-5-1-10-4-12-8-2 4-7 7-12 9z" fill="#E2B866"/>
+                <circle cx="27.5" cy="30.5" r="1.4" fill="#1C1A35"/><circle cx="36.5" cy="30.5" r="1.4" fill="#1C1A35"/>
+                <path d="M28.5 35q3.5 2.6 7 0" stroke="#1C1A35" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="25" cy="34" r="1.8" fill="#F2A7A7" opacity=".75"/><circle cx="39" cy="34" r="1.8" fill="#F2A7A7" opacity=".75"/>
+              </g></svg>
+            </span>
+            <p class="review-card__who"><b>Екатерина</b><span>21 марта, Яндекс Карты</span></p>
+            <span class="stars" role="img" aria-label="5 из 5">★★★★★</span>
+          </div>
+        </li>
+        <li class="review-card">
+          <div class="review-card__top">
+            <span class="review-card__quote" aria-hidden="true">“</span>
+            <span class="pill">Стационар</span>
+          </div>
+          <blockquote class="review-card__text">Искали, где стерилизовать бездомную кошку. Нас приняли без предварительной записи и оставили кошку в стационаре на 5 дней. Кошка дикая, к людям не подходит, но доктора справились. Будем обращаться снова.</blockquote>
+          <div class="review-card__foot">
+            <span class="review-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><clipPath id="av-3"><circle cx="32" cy="32" r="32"/></clipPath><g clip-path="url(#av-3)">
+                <rect width="64" height="64" fill="#DDD8F4"/>
+                <circle cx="32" cy="13" r="6.5" fill="#2E2433"/>
+                <path d="M13 64c0-11 8-18 19-18s19 7 19 18z" fill="#1C1A35"/>
+                <rect x="28" y="38" width="8" height="9" rx="3" fill="#E8B99A"/>
+                <circle cx="32" cy="29" r="12" fill="#E8B99A"/>
+                <path d="M20 29c0-8 5-13 12-13s12 5 12 13c-2-4-6-7-12-7s-10 3-12 7z" fill="#2E2433"/>
+                <circle cx="27.5" cy="30" r="3.4" fill="none" stroke="#1C1A35" stroke-width="1.2"/><circle cx="36.5" cy="30" r="3.4" fill="none" stroke="#1C1A35" stroke-width="1.2"/>
+                <path d="M30.9 30h2.2" stroke="#1C1A35" stroke-width="1.2"/>
+                <circle cx="27.5" cy="30" r="1.2" fill="#1C1A35"/><circle cx="36.5" cy="30" r="1.2" fill="#1C1A35"/>
+                <path d="M28.5 35q3.5 2.6 7 0" stroke="#1C1A35" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </g></svg>
+            </span>
+            <p class="review-card__who"><b>Носова Анна</b><span>10 июля 2025, Яндекс Карты</span></p>
+            <span class="stars" role="img" aria-label="5 из 5">★★★★★</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="reviews-stage__dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <!-- 7. Контакты -->
+  <section class="sheet sheet--card" id="contacts" aria-labelledby="contacts-title">
+    <div class="container contacts">
+      <h2 class="contacts__word" id="contacts-title" data-fit>Контакты</h2>
+
+      <dl class="contacts__info">
+        <div class="contacts__item">
+          <dt>Адрес</dt>
+          <dd>Энгельс, пр-т Фридриха Энгельса, 24, 1&nbsp;этаж</dd>
+        </div>
+        <div class="contacts__item">
+          <dt>Часы работы</dt>
+          <dd>Ежедневно, 8:00–20:00</dd>
+        </div>
+        <div class="contacts__item">
+          <dt>Телефон</dt>
+          <dd><a class="contacts__phone" href="tel:+79085484651">+7 908 548-46-51</a></dd>
+        </div>
+        <div class="contacts__item">
+          <dt>Мессенджеры</dt>
+          <dd class="contacts__actions">
+            <!-- TODO: ссылка на MAX клиники (сейчас max.ru); меняется здесь, в подвале и в js/config.js -->
+            <a class="btn btn--primary btn--sm" href="https://max.ru/" target="_blank" rel="noopener" data-messenger="max">MAX</a>
+            <a class="btn btn--ghost btn--sm" href="https://t.me/+79085484651" target="_blank" rel="noopener" data-messenger="telegram">Telegram</a>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="map" data-map>
+        <!-- Своя карта (MapLibre + OpenFreeMap): без рекламы и в цветах сайта. Без WebGL и в превью остаётся фон-заглушка -->
+        <div class="map__canvas" id="clinic-map" role="region" aria-label="Карта: ВетЭксперт, пр-т Фридриха Энгельса, 24"></div>
+        <div class="map__fallback" aria-hidden="true"></div>
+        <div class="map__actions">
+          <a class="btn btn--primary btn--sm" href="https://yandex.ru/maps/org/vetekspert/26442412714/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          <a class="btn btn--light btn--sm" href="https://2gis.ru/engels/firm/70000001029040717" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 8. Подвал -->
+<footer class="site-footer">
+  <div class="site-footer__spheres" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="container site-footer__inner">
+    <div class="site-footer__cols">
+      <div class="site-footer__col">
+        <p class="site-footer__lead">Ветеринарная клиника в Энгельсе</p>
+        <a class="btn btn--primary btn--sm" href="#booking">Записаться на приём</a>
+      </div>
+      <nav class="site-footer__col" aria-label="Разделы сайта в подвале">
+        <a href="#services">Услуги</a>
+        <a href="#about">О клинике</a>
+        <a href="#doctors">Врачи</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="site-footer__col">
+        <a href="tel:+79085484651">+7 908 548-46-51</a>
+        <span>Ежедневно 8:00–20:00</span>
+        <span>пр-т Фридриха Энгельса, 24</span>
+      </div>
+      <div class="site-footer__col">
+        <a href="https://max.ru/" target="_blank" rel="noopener" data-messenger="max">MAX</a>
+        <a href="https://t.me/+79085484651" target="_blank" rel="noopener" data-messenger="telegram">Telegram</a>
+        <a href="https://yandex.ru/maps/org/vetekspert/26442412714/" target="_blank" rel="noopener">Яндекс Карты</a>
+      </div>
+    </div>
+
+    <p class="site-footer__wordmark" aria-hidden="true" data-fit data-hearts="light"><span class="wm-ink">ВетЭксперт</span></p>
+
+    <div class="site-footer__row">
+      <span>© 2026 Ветеринарная клиника ВетЭксперт</span>
+      <!-- TODO: страница политики обработки персональных данных -->
+      <a href="#">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Окно «Заявка принята» (js/main.js → showSuccess). Пока форма никуда не отправляется -->
+<dialog class="success" id="booking-success" aria-labelledby="success-title" aria-describedby="success-text">
+  <div class="success__badge" aria-hidden="true">
+    <svg class="success__check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+    <svg class="success__heart success__heart--1" viewBox="-0.5 -0.5 1 0.82"><path d="M0 0.32C-0.06 0.26-0.5-0.04-0.5-0.24-0.5-0.43-0.33-0.5-0.22-0.5-0.12-0.5-0.04-0.44 0-0.37 0.04-0.44 0.12-0.5 0.22-0.5 0.33-0.5 0.5-0.43 0.5-0.24 0.5-0.04 0.06 0.26 0 0.32Z"/></svg>
+    <svg class="success__heart success__heart--2" viewBox="-0.5 -0.5 1 0.82"><path d="M0 0.32C-0.06 0.26-0.5-0.04-0.5-0.24-0.5-0.43-0.33-0.5-0.22-0.5-0.12-0.5-0.04-0.44 0-0.37 0.04-0.44 0.12-0.5 0.22-0.5 0.33-0.5 0.5-0.43 0.5-0.24 0.5-0.04 0.06 0.26 0 0.32Z"/></svg>
+    <svg class="success__heart success__heart--3" viewBox="-0.5 -0.5 1 0.82"><path d="M0 0.32C-0.06 0.26-0.5-0.04-0.5-0.24-0.5-0.43-0.33-0.5-0.22-0.5-0.12-0.5-0.04-0.44 0-0.37 0.04-0.44 0.12-0.5 0.22-0.5 0.33-0.5 0.5-0.43 0.5-0.24 0.5-0.04 0.06 0.26 0 0.32Z"/></svg>
+  </div>
+  <h2 class="success__title" id="success-title">Заявка принята</h2>
+  <p class="success__text" id="success-text"><span data-success-name></span>, спасибо! Администратор перезвонит в рабочее время, с 8:00 до 20:00, и подтвердит время приёма.</p>
+  <dl class="success__summary">
+    <div><dt>Питомец</dt><dd data-success-pet></dd></div>
+    <div><dt>Услуга</dt><dd data-success-service></dd></div>
+    <div><dt>Врач</dt><dd data-success-doctor></dd></div>
+    <div><dt>Удобное время</dt><dd data-success-time></dd></div>
+    <div><dt>Телефон</dt><dd data-success-phone></dd></div>
+  </dl>
+  <button class="btn btn--primary success__close" type="button" data-success-close>Хорошо</button>
+</dialog>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/hearts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>
