@@ -10,6 +10,8 @@
   const words = document.querySelectorAll("[data-hearts]");
   if (!words.length) return;
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // На телефонах и планшетах наведения нет — там остаётся обычная надпись, без холста
+  if (!canHover) return;
   const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const weak = (navigator.hardwareConcurrency || 8) <= 4;
 

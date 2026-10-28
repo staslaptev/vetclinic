@@ -35,7 +35,8 @@
     </a>
 
     <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      <!-- две линии: в открытом меню сходятся в крестик (css .menu-toggle[aria-expanded="true"]) -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path class="menu-toggle__line menu-toggle__line--1" d="M4 8h16"/><path class="menu-toggle__line menu-toggle__line--2" d="M4 16h16"/></svg>
     </button>
 
     <nav class="nav" id="site-nav" aria-label="Разделы сайта">
