@@ -161,6 +161,8 @@ body::before {
   .nav__list { flex-direction: column; gap: 2px; }
   .nav__link { width: 100%; min-height: 52px; font-size: 18px; justify-content: center; }
   .nav__extra { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .nav__info { display: grid; gap: 2px; margin: 10px 0 0; text-align: center; font-size: 15px; }
+  .nav__info span { color: var(--ink-soft); font-size: 14px; }
 }
 @media (min-width: 1024px) {
   .nav[hidden] { display: block !important; }
@@ -251,12 +253,17 @@ body::before {
 /* Телефон: всё по центру, животные сразу под рейтингом — без пустой лавандовой полосы.
    Высота блока животных = высоте самой картинки (1222×688), поэтому сверху нет прозрачного запаса */
 @media (max-width: 767px) {
-  .hero__stage { min-height: 0; padding-bottom: calc(56.3vw - 12px); }
-  .hero__stage-inner { flex-direction: column; align-items: center; gap: 22px; text-align: center; padding-block: 28px 20px; }
-  .hero__meta { justify-items: center; max-width: none; }
+  /* часы и адрес на телефоне — в бургер-меню (.nav__info) */
+  /* подиум ниже хвостика «р» с отступом как между кнопками; снизу — воздух между рейтингом и ушами */
+  .hero__stage { min-height: 0; margin-top: 19px; padding-bottom: calc(88vw + 16px); }
+  .hero__stage-inner { flex-direction: column; align-items: center; gap: 22px; text-align: center; padding-block: 22px 12px; }
+  .hero__meta { display: none; }
   .hero__offer { justify-items: center; max-width: 34ch; gap: 16px; }
   .hero__offer .btn, .hero__rating { width: 100%; justify-content: center; }
-  .hero__pets { width: 100%; height: 56.3vw; }
+  /* Животные крупнее экрана, бока обрезает overflow-x: clip у .hero. Подобрано по картинке hero-pets (1222×688):
+     левое ухо пса ≈15,5%, правое ухо кота ≈74,8% ширины — при ширине 156vw и сдвиге центра на 6,2vw вправо уши в ~22px от краёв (замерено на 390px)
+     оба уха стоят в ~3,7vw (≈14px) от краёв экрана */
+  .hero__pets { width: 156vw; height: 87.8vw; left: calc(50% + 6.2vw); }
 }
 
 /* ---------- Бегущая строка (заглушка этапа 2) ---------- */

@@ -5,7 +5,7 @@ window.VET_CONFIG = {
     phone: "+7 908 548-46-51",
     phoneHref: "tel:+79085484651",
     address: "Энгельс, пр-т Фридриха Энгельса, 24, 1 этаж",
-    hours: "Ежедневно 8:00–20:00",
+    hours: "Ежедневно 08:00–20:00",
     yandexOrg: "https://yandex.ru/maps/org/vetekspert/26442412714/",
     max: "https://max.ru/", // TODO: ссылка на канал или чат клиники в MAX
     telegram: "https://t.me/+79085484651",
